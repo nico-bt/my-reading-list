@@ -1,0 +1,106 @@
+.title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  height: 110px;
+  background: linear-gradient(darkgreen, green);
+  color: white;
+  margin-bottom: 25px;
+  /* box-shadow: 0px 2px 4px black; */
+}
+
+.flexForm {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 25px;
+  margin: 20px;
+  margin-top: 5px;
+}
+.iconClose {
+  display: flex;
+  justify-content: end;
+  margin: 0;
+  padding: 0;
+}
+.iconClose i {
+  cursor: pointer;
+}
+.submitBtn {
+  width: 100%;
+}
+.submitBtn button {
+  width: 50%;
+}
+
+#formNewBook {
+  position: absolute;
+  top: 18%;
+  width: 100%;
+  text-align: center;
+  z-index: 2;
+}
+#formNewBook.hide {
+  opacity: 0;
+  visibility: hidden;
+  height: 0;
+}
+div {
+  transition: ease-in-out 0.25s;
+}
+
+#formNewBook > div {
+  border-radius: 12px;
+  border: 1px solid black;
+  background-color: lightgray;
+  box-shadow: 1px 2px 6px black;
+}
+
+.flexContainer {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 25px;
+}
+
+#showForm {
+  border-radius: 50%;
+  height: 80px;
+  width: 80px;
+  box-shadow: 3px 2px 5px black;
+}
+
+.card {
+  border: 1px solid black;
+  box-shadow: 1px 2px 6px black;
+}
+.card-title {
+  color: white;
+  font-size: 1.5rem;
+  padding-top: 12px;
+}
+/* Buttons rendered in books.js */
+.deleteBtn {
+  position: absolute;
+  right: 6px;
+  top: 2px;
+  cursor: pointer;
+  color: rgb(185, 0, 0);
+}
+
+.readTrue {
+  color: green;
+}
+.readFalse {
+  color: rgb(222, 0, 0);
+}
+
+.toggleRead {
+  border: 1px solid rgb(224, 222, 222);
+  border-radius: 10px;
+  padding: 0px 20px;
+}
+button > i {
+  pointer-events: none; /*this allowed fontawesome icon ti be clicked in toggleRead button*/
+  margin-left: 10px;
+}
