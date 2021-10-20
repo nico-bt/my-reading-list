@@ -106,7 +106,7 @@ function displayBooks() {
                     </li>
                 </ul>
                 <div class="card-footer">
-                    <small class="text-muted"><a href="${book.amazonLink}" target='_blank' class="card-link">${book.amazonLink? "Link to Amazon":"" } </a></small>
+                    <small class="text-muted"><a href="${book.amazonLink}" target='_blank' class="card-link">${book.amazonLink? "Book link":"" } </a></small>
                 </div>
             </div>`
         libraryHtml.appendChild(newDiv)

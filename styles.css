@@ -107,7 +107,11 @@ div {
   border-radius: 10px;
   padding: 0px 20px;
 }
+.toggleRead:hover {
+  background-color: rgb(185, 183, 183);
+}
+
 button > i {
-  pointer-events: none; /*this allowed fontawesome icon ti be clicked in toggleRead button*/
+  pointer-events: none; /*this allowed fontawesome icon to be clicked in toggleRead button*/
   margin-left: 10px;
 }
