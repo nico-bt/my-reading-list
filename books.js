@@ -35,7 +35,7 @@ let myLibrary = []
 function Book(title, author, amazonLink, isRead) {
     this.title = title;
     this.author = author;
-    this.amazonLink = this.amazonLink
+    this.amazonLink = amazonLink
     this.isRead = isRead;
     this.toggleRead= function () {
         this.isRead= !this.isRead
@@ -76,13 +76,13 @@ function inputValidation(input) {
 }
 
 //Adding some default books to show
-const book1 = new Book ("Atomic Habits", "James Clear", "www.amazon.com", true);
+const book1 = new Book ("Atomic Habits", "James Clear", "https://www.amazon.com/-/en/James-Clear/dp/0735211299", true);
 myLibrary.push(book1)
 
-const book2 = new Book ("A Short History of Nearly Everything", " Bill Bryson", "www.amazon.com", false);
+const book2 = new Book ("A Short History of Nearly Everything", " Bill Bryson", "https://www.amazon.com/-/en/Bill-Bryson/dp/076790818X", false);
 myLibrary.push(book2)
 
-const book3 = new Book ("Thinking, Fast and Slow", " Daniel Kahneman", "www.amazon.com", false);
+const book3 = new Book ("Thinking, Fast and Slow", " Daniel Kahneman", "https://www.amazon.com/Thinking-Fast-Slow-Daniel-Kahneman/dp/0374275637/", false);
 myLibrary.push(book3)
 
 //Display each book of library in the HTML
@@ -106,7 +106,7 @@ function displayBooks() {
                     </li>
                 </ul>
                 <div class="card-footer">
-                    <small class="text-muted"><a href="#" class="card-link">Link to Amazon</a></small>
+                    <small class="text-muted"><a href="${book.amazonLink}" target='_blank' class="card-link">${book.amazonLink? "Link to Amazon":"" } </a></small>
                 </div>
             </div>`
         libraryHtml.appendChild(newDiv)
