@@ -70,6 +70,13 @@ div {
   box-shadow: 3px 2px 5px black;
 }
 
+.formValidation {
+  border: 2px solid red;
+}
+.formValidation:focus {
+  border: 2px solid red;
+}
+
 .card {
   border: 1px solid black;
   box-shadow: 1px 2px 6px black;

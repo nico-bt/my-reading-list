@@ -44,13 +44,35 @@ function Book(title, author, amazonLink, isRead) {
 
 function addBookToLibrary(e) {
     e.preventDefault(e.target)
+
+    if (titleInput.value=="") {
+        inputValidation(titleInput)
+        return
+    }
+    if (authorInput.value=="") {
+        inputValidation(authorInput)
+        return
+    }
+
     const newBook= new Book(titleInput.value, authorInput.value, amazonLinkInput.value, isReadInput.checked)
+    myLibrary.push(newBook)
+    displayBooks()
+    
     titleInput.value =""
     authorInput.value=""
     amazonLinkInput.value=""
-    myLibrary.push(newBook)
-    displayBooks()
     formNewBook.classList.add("hide")
+    titleInput.classList.remove("formValidation")
+    authorInput.classList.remove("formValidation")
+}
+
+// Form Validation
+function inputValidation(input) {
+    input.classList.add("formValidation")
+    input.focus()
+    input.addEventListener("input",()=>{
+        input.classList.remove("formValidation")
+    })
 }
 
 //Adding some default books to show
