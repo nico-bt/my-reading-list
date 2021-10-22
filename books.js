@@ -22,7 +22,7 @@ showForm.addEventListener("click", ()=>{
     formNewBook.classList.toggle("hide")
     setTimeout(()=>titleInput.focus(), 100)
 })
-formCloseBtn.addEventListener("click", ()=>formNewBook.classList.toggle("hide"))
+formCloseBtn.addEventListener("click", ()=> formNewBook.classList.toggle("hide"))
 
 addBookBtn.addEventListener("click",(e)=>addBookToLibrary(e))
 
@@ -37,11 +37,7 @@ function Book(title, author, amazonLink, isRead) {
     this.author = author;
     this.amazonLink = amazonLink
     this.isRead = isRead;
-    // this.toggleRead= function () {
-    //     this.isRead= !this.isRead
-    // }
 }
-
 Book.prototype.toggleRead = function () {
     this.isRead= !this.isRead
 }
