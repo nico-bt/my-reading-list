@@ -37,11 +37,16 @@ function Book(title, author, amazonLink, isRead) {
     this.author = author;
     this.amazonLink = amazonLink
     this.isRead = isRead;
-    this.toggleRead= function () {
-        this.isRead= !this.isRead
-    }
+    // this.toggleRead= function () {
+    //     this.isRead= !this.isRead
+    // }
 }
 
+Book.prototype.toggleRead = function () {
+    this.isRead= !this.isRead
+}
+
+//Take input values, create a book object and add it to myLibrary array
 function addBookToLibrary(e) {
     e.preventDefault(e.target)
 
