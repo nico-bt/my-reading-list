@@ -18,18 +18,22 @@ let toggleReadBtns = document.querySelectorAll(".toggleRead")
 //===============================================================
 // Event Listeners
 //===============================================================
-showForm.addEventListener("click", ()=>{
-    formNewBook.classList.toggle("hide")
-    setTimeout(()=>titleInput.focus(), 100)
-})
-formCloseBtn.addEventListener("click", ()=> formNewBook.classList.toggle("hide"))
+showForm.addEventListener("click", showFormAndFocus)
 
-addBookBtn.addEventListener("click",(e)=>addBookToLibrary(e))
+formCloseBtn.addEventListener("click", closeForm)
+
+addBookBtn.addEventListener("click",(e)=> addBookToLibrary(e))
 
 //===============================================================
 // Functions
 //===============================================================
-let myLibrary = []
+function showFormAndFocus(){
+    formNewBook.classList.toggle("hide")
+    setTimeout(()=>titleInput.focus(), 100)
+}
+function closeForm(){
+    formNewBook.classList.toggle("hide")
+}
 
 //Book object
 function Book(title, author, amazonLink, isRead) {
@@ -42,8 +46,10 @@ Book.prototype.toggleRead = function () {
     this.isRead= !this.isRead
 }
 
+let myLibrary = []
 //Take input values, create a book object and add it to myLibrary array
 function addBookToLibrary(e) {
+    
     e.preventDefault(e.target)
 
     if (titleInput.value=="") {
@@ -57,8 +63,10 @@ function addBookToLibrary(e) {
 
     const newBook= new Book(titleInput.value, authorInput.value, amazonLinkInput.value, isReadInput.checked)
     myLibrary.push(newBook)
+    sendLibToLocalStorage(myLibrary)
     displayBooks()
     
+    // Clear input values and hide form
     titleInput.value =""
     authorInput.value=""
     amazonLinkInput.value=""
@@ -75,16 +83,6 @@ function inputValidation(input) {
         input.classList.remove("formValidation")
     })
 }
-
-//Adding some default books to show
-const book1 = new Book ("Atomic Habits", "James Clear", "https://www.amazon.com/-/en/James-Clear/dp/0735211299", true);
-myLibrary.push(book1)
-
-const book2 = new Book ("A Short History of Nearly Everything", " Bill Bryson", "https://www.amazon.com/-/en/Bill-Bryson/dp/076790818X", false);
-myLibrary.push(book2)
-
-const book3 = new Book ("Thinking, Fast and Slow", " Daniel Kahneman", "https://www.amazon.com/Thinking-Fast-Slow-Daniel-Kahneman/dp/0374275637/", false);
-myLibrary.push(book3)
 
 //Display each book of library in the HTML
 function displayBooks() {
@@ -119,6 +117,7 @@ function displayBooks() {
     deleteBtns.forEach(btn=>{
     btn.addEventListener("click", (e)=> {
         myLibrary.splice(e.target.dataset.bookIndex,1)
+        sendLibToLocalStorage(myLibrary)
         displayBooks()
         })
     })
@@ -130,10 +129,44 @@ function displayBooks() {
         let book =myLibrary[e.target.dataset.bookIndex]
         book.toggleRead()
         // console.log(e.target.dataset.bookIndex)
+        sendLibToLocalStorage(myLibrary)
         displayBooks()
         })
     })
 }
 
-//Main, display on first load
+//===============================================================
+// Local Storage
+//===============================================================
+function checkIfLocalStorage(){
+    if (localStorage.library) {
+        // Retrieve data into myLibrary
+        let libraryArray = JSON.parse(localStorage.library)
+        libraryArray.forEach(item => {
+            let newBook = new Book(item.title, item.author, item.amazonLink, item.isRead)
+            myLibrary.push(newBook)
+        })
+    } else {
+        //Adding some default books to show
+        const book1 = new Book ("Atomic Habits", "James Clear", "https://www.amazon.com/-/en/James-Clear/dp/0735211299", true);
+        myLibrary.push(book1)
+    
+        const book2 = new Book ("A Short History of Nearly Everything", " Bill Bryson", "https://www.amazon.com/-/en/Bill-Bryson/dp/076790818X", false);
+        myLibrary.push(book2)
+    
+        const book3 = new Book ("Thinking, Fast and Slow", " Daniel Kahneman", "https://www.amazon.com/Thinking-Fast-Slow-Daniel-Kahneman/dp/0374275637/", false);
+        myLibrary.push(book3)
+    }
+}
+
+// To copy myLibrary to LocalStorage
+function sendLibToLocalStorage(library){
+    let jsonLibrary = JSON.stringify(library)
+    localStorage.setItem("library", jsonLibrary)
+}
+
+//===============================================================
+//Main: display on first load
+//===============================================================
+checkIfLocalStorage()
 displayBooks()
