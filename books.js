@@ -135,6 +135,10 @@ function displayBooks() {
         displayBooks()
         })
     })
+    // Display message if there is no books
+    if (myLibrary.length==0) {
+        libraryHtml.innerHTML="<h2 style='color:white'>Your list is empty. Add a new book to read</h2>";
+    }
 }
 
 //===============================================================
