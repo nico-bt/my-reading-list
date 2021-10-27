@@ -90,6 +90,11 @@ div {
   margin: 0 1%;
   border-radius: 10px;
 }
+@media (min-width: 2000px) {
+  .card-group {
+    margin: 0 10%;
+  }
+}
 
 .card {
   border: 1px solid black;
