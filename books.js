@@ -93,7 +93,7 @@ function displayBooks() {
         newDiv.innerHTML= `
             <div class="card text-center text-dark bg-dark h-100" style="width: 18rem;">
                 <div class="card-body">
-                    <span class="deleteBtn" data-book-index=${index}> <i class="far fa-trash-alt"></i> </span>
+                    <span class="deleteBtn"> <i class="far fa-trash-alt" data-book-index=${index}></i> </span>
                     <h5 class="card-title">${book.title}</h5>
                 </div>
                 <ul class="list-group list-group-flush">
@@ -116,6 +116,7 @@ function displayBooks() {
     deleteBtns = document.querySelectorAll(".deleteBtn")
     deleteBtns.forEach(btn=>{
     btn.addEventListener("click", (e)=> {
+        // console.log(e.target.dataset.bookIndex)
         myLibrary.splice(e.target.dataset.bookIndex,1)
         sendLibToLocalStorage(myLibrary)
         displayBooks()
