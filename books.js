@@ -70,6 +70,7 @@ function addBookToLibrary(e) {
     titleInput.value =""
     authorInput.value=""
     amazonLinkInput.value=""
+    isReadInput.checked=false
     formNewBook.classList.add("hide")
     titleInput.classList.remove("formValidation")
     authorInput.classList.remove("formValidation")
