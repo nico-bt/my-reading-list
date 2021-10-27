@@ -154,14 +154,14 @@ function checkIfLocalStorage(){
         })
     } else {
         //Adding some default books to show
+        const book0 = new Book ("Ficciones", "Jorge Luis Borges", "https://www.amazon.com/-/es/Jorge-Luis-Borges/dp/0307950921", true);
+        myLibrary.push(book0)
+
         const book1 = new Book ("Atomic Habits", "James Clear", "https://www.amazon.com/-/en/James-Clear/dp/0735211299", true);
         myLibrary.push(book1)
-    
+        
         const book2 = new Book ("A Short History of Nearly Everything", " Bill Bryson", "https://www.amazon.com/-/en/Bill-Bryson/dp/076790818X", false);
         myLibrary.push(book2)
-    
-        const book3 = new Book ("Thinking, Fast and Slow", " Daniel Kahneman", "https://www.amazon.com/Thinking-Fast-Slow-Daniel-Kahneman/dp/0374275637/", false);
-        myLibrary.push(book3)
     }
 }
 
