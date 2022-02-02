@@ -85,7 +85,7 @@ div {
 }
 
 .card-group {
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: rgba(0, 0, 0, 0.4);
   padding: 20px;
   margin: 0 1%;
   border-radius: 10px;
@@ -104,6 +104,9 @@ div {
   color: white;
   font-size: 1.5rem;
   padding-top: 12px;
+}
+.card-footer {
+  min-height: 40px;
 }
 /* Buttons rendered in books.js */
 .deleteBtn {
